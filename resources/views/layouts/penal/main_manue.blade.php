@@ -50,7 +50,7 @@
           </a>
         </li>
         <li>
-          <a href="components-badges.html">
+          <a href="<?php echo e('permission')?>">
             <i class="bi bi-circle"></i><span>Permission List</span>
           </a>
         </li>
