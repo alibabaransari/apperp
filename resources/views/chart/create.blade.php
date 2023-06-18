@@ -112,6 +112,8 @@
      </div>
     </section>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $(document).ready(function() {
 		$(".btn-success").click(function(e){
@@ -136,7 +138,7 @@
 
 </script>
 	<script type="text/javascript">
-		$('#account_id').select2();
+		// $('#account_id').select2();
 	</script>
 	<script>
 		function get_nature_type()
