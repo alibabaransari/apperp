@@ -133,21 +133,21 @@ $currentMonthEndDate   = date('Y-m-t');
             </div>
         </div>
     </div>
-    <script !src="">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
         function UpdateOpening(AccountId)
         {
             //alert(); return false;
        
             var TranType = $('#tran_type'+AccountId).val();
             var OpeningAmount =  $('#opening_amount'+AccountId).val();
-            //alert(OpeningAmount);
             if(TranType != "" && OpeningAmount != "")
             {
-                $('#Loader'+AccountId).html('<img src="<?php echo url('/')?>/assets/img/loading.gif">');
+                $('#Loader'+AccountId).html('<img src="<?php echo url('/')?>/img/loading.gif">');
                 $.ajax({
-                    url: '<?php echo url('/')?>/fdc/insertOpeningBalance',
+                    url: '<?php echo url('/')?>/insertOpeningBalance',
                     type: "GET",
-                    data: {Account_Id:AccountId,nature:TranType,amount:OpeningAmount,AccYearFrom:AccYearFrom,AccYearTo:AccYearTo},
+                    data: {Account_Id:AccountId,nature:TranType,amount:OpeningAmount},
                     success: function (data) {
                         $('#Loader'+AccountId).html('');
                     }

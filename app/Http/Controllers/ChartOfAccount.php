@@ -140,7 +140,7 @@ class ChartOfAccount extends Controller
     public function opening()
     {
         $AccountsData = DB::select('select * from accounts where status = 1 and parent_code LIKE "1%" OR code LIKE  "2%" OR code = 1 OR code = 2 order by `level1`,`level2`,`level3`,`level4`,`level5`,`level6`,`level7`');
-		
+	 
         return view('chart.chartopening',compact('AccountsData'));
     }
 
@@ -176,5 +176,59 @@ class ChartOfAccount extends Controller
     public function destroy(CaseStudy $caseStudy)
     {
         //
+    }
+
+	function insertOpeningBalance(Request $request)
+    {
+        DB::beginTransaction();
+
+        try {
+
+
+            $acc_id=$request->Account_Id;
+            $nature=$request->nature;
+            $amount=$request->amount;
+            $AccYearFrom='2021-01-02';
+            $AccYearTo='2024-10-02';
+
+            $data['debit_credit']=$nature;
+
+            $data['amount']=$amount;
+
+
+            //$count=$this->db->query('select acc_id from transactions where acc_id="'.$acc_id.'" and opening_bal=1')->num_rows();
+            $count = DB::table('transactions')->where('acc_id',$acc_id)->where('opening_bal',1);
+
+            if ($count->count() > 0):
+//            $this->db->where('acc_id',$acc_id);
+//            $this->db->where('opening_bal',1);
+//            $this->db->update('transactions',$data);
+            DB::table('transactions')->where('acc_id',$acc_id)->where('opening_bal',1)->update($data);
+                else:
+                    $AccCode = DB::table('accounts')->where('id',$acc_id)->select('code')->first();
+                    $data['debit_credit']=$nature;
+                    $data['amount']=$amount;
+                    $data['v_date']=$AccYearFrom;
+                    $data['opening_bal']=1;
+                    $data['username'] = Auth::user()->name;
+                    $data['date']=date('Y-m-d');
+                    $data['status']=1;
+                    $data['acc_id']=$acc_id;
+                    $data['debit_credit']=$nature;
+                    $data['acc_code']= $AccCode->code;
+                    $data['action']= 'Opening';
+                    //$this->db->insert('transactions',$data);
+                    DB::table('transactions')->insert($data);
+
+                endif;
+            DB::commit();
+        }
+        catch(\Exception $e)
+        {
+            DB::rollback();
+            echo "EROOR"; //die();
+            dd($e->getMessage());
+
+        }
     }
 }

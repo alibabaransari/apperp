@@ -69,7 +69,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/chart-of-account-store',[ChartOfAccount::class,'store'])->name('account-store');
     Route::get('/chart-of-account-list',[ChartOfAccount::class,'index'])->name('account-list');
     Route::get('/chart-of-account-opening',[ChartOfAccount::class,'opening'])->name('account-opening');
-
+    Route::get('/insertOpeningBalance', [ChartOfAccount::class,'insertOpeningBalance']);
 
 });
 Auth::routes();
