@@ -19,11 +19,11 @@
         <div class="card-body">
             <h5 class="card-title">Client Management</h5>
             
-                    <div class="pull-right">
+             
                     @can('role-create')
                         <a class="btn btn-success" href="{{ route('client.create') }}"> Add Client</a>
                     @endcan
-                    </div>
+            
 @if ($message = Session::get('success'))
     <div class="alert alert-success alert-dismissible fade show">
         <p>{{ $message }}</p>
