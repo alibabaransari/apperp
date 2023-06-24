@@ -2,20 +2,22 @@
 
 
 @section('content')
-<div class="content-wrapper">
-    <section class="content">
-        <div class="container-fluid">
+<div class="pagetitle">
+    <h1>Edit Permission</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Forms</li>
+        <li class="breadcrumb-item active">Elements</li>
+      </ol>
+    </nav>
+  </div>
+    <section class="section">
 <div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Edit Permission</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('permission.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
-
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
 
 @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -45,5 +47,8 @@
 {!! Form::close() !!}
 
         </div>
-    </section></div>
+    </div>
+</div>
+</div>
+    </section>
 @endsection

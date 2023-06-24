@@ -2,22 +2,26 @@
 
 
 @section('content')
-<div class="content-wrapper">
-    <section class="content">
-        <div class="container-fluid">
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Role Management</h2>
-        </div>
-        <div class="pull-right">
+<div class="pagetitle">
+    <h1>Role List</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Forms</li>
+        <li class="breadcrumb-item active">Elements</li>
+      </ol>
+    </nav>
+  </div>
+    <section class="section">
+  <div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
         @can('role-create')
             <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
             @endcan
-        </div>
-    </div>
-</div>
-
+       
 
 @if ($message = Session::get('success'))
     <div class="alert alert-success">
@@ -55,6 +59,10 @@
 {!! $roles->render() !!}
 
         </div>
-    </section>
+    </div>
 </div>
+</div>
+
+    </section>
+
 @endsection

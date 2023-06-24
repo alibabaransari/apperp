@@ -9,8 +9,58 @@
         <span>Dashboard</span>
       </a>
     </li><!-- End Dashboard Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#client" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-person"></i><span>Client</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="client" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="{{ route('client.index') }}">
+            <i class="bi bi-circle"></i><span>Client List</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ route('client.create') }}">
+            <i class="bi bi-circle"></i><span>Create Client</span>
+          </a>
+        </li>
+    
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#lead" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-lightning-charge"></i><span>Lead</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="lead" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="{{ route('lead.index') }}">
+            <i class="bi bi-circle"></i><span>Lead List</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ route('lead.create') }}">
+            <i class="bi bi-circle"></i><span>Create Lead</span>
+          </a>
+        </li>
+    
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#setting-setting" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-wrench"></i><span>System Setting</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="setting-setting" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="{{ route('system-setting.edit',2) }}">
+            <i class="bi bi-circle"></i><span>Update system</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
 {{-- Char OF Account --}}
-<li class="nav-item">
+{{-- <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#chart-account" data-bs-toggle="collapse" href="#">
     <i class="bi bi-menu-button-wide"></i><span>Chart OF Account</span><i class="bi bi-chevron-down ms-auto"></i>
   </a>
@@ -33,24 +83,24 @@
 
 
   </ul>
-</li>
+</li> --}}
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#setting-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Setting</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-sliders"></i><span>Setting</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="setting-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="<?php echo e('users')?>">
+          <a href="{{route('users.index')}}">
             <i class="bi bi-circle"></i><span>User List</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo e('roles')?>">
+          <a href="{{route('roles.index')}}">
             <i class="bi bi-circle"></i><span>Role List</span>
           </a>
         </li>
         <li>
-          <a href="<?php echo e('permission')?>">
+          <a href="{{route('permission.index')}}">
             <i class="bi bi-circle"></i><span>Permission List</span>
           </a>
         </li>
@@ -122,7 +172,16 @@
       </ul>
     </li>
 
-
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="{{ route('logout') }}"  onclick="event.preventDefault();
+      document.getElementById('logout-form').submit();">
+        <i class="bi bi-box-arrow-in-right"></i>
+        logout
+     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+         @csrf
+     </form>
+      </a>
+    </li>
 
 
 

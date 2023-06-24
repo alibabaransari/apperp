@@ -2,19 +2,24 @@
 
 
 @section('content')
-<div class="content-wrapper">
-    <section class="content">
-        <div class="container-fluid">
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Users Management</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
-        </div>
-    </div>
+<div class="pagetitle">
+  <h1>User List</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item">Forms</li>
+      <li class="breadcrumb-item active">Elements</li>
+    </ol>
+  </nav>
 </div>
+  <section class="section">
+<div class="row">
+<div class="col-lg-12">
+  <div class="card">
+      <div class="card-body">
+          <h5 class="card-title"></h5>
+            <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
+       
 
 
 @if ($message = Session::get('success'))
@@ -59,5 +64,9 @@
 {!! $data->render() !!}
 
 
-        </div></section></div>
+        </div>
+      </div>
+    </div>
+</div>
+      </section>
 @endsection

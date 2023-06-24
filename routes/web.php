@@ -21,6 +21,10 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TestimonalController;
 use App\Http\Controllers\WhyChoseUsController;
 use App\Http\Controllers\ChartOfAccount;
+use App\Http\Controllers\SystemSettingController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\LeadController;
+
 
 
 /*
@@ -33,7 +37,10 @@ use App\Http\Controllers\ChartOfAccount;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('migrate', function () {
+    Artisan::call('migrate');
+    echo 'all migrations are successfully migrated.';
+});
 // Route::get('/', function () {
     // return view('welcome');
     Route::get('/', [HomeController::class, 'site'])->name('site');
@@ -70,6 +77,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/chart-of-account-list',[ChartOfAccount::class,'index'])->name('account-list');
     Route::get('/chart-of-account-opening',[ChartOfAccount::class,'opening'])->name('account-opening');
     Route::get('/insertOpeningBalance', [ChartOfAccount::class,'insertOpeningBalance']);
+
+    Route::resource('system-setting', SystemSettingController::class);
+    Route::resource('client', ClientController::class);
+    Route::resource('lead', LeadController::class);
 
 });
 Auth::routes();
