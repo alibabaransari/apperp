@@ -19,7 +19,7 @@
         <div class="card-body">
             <h5 class="card-title"></h5>
             @can('role-create')
-            <a class="btn btn-success" href="{{ route('lead.create') }}"> Add Client</a>
+            <a class="btn btn-success" href="{{ route('lead.create') }}"> Add Lead</a>
         @endcan
 @if ($message = Session::get('success'))
     <div class="alert alert-success">
